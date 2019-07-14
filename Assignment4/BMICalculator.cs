@@ -16,10 +16,5 @@ namespace Assignment4
         {
             InitializeComponent();
         }
-
-        private void BMICalculator_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }
