@@ -17,6 +17,8 @@ namespace Assignment4
         public float outputValue { get; set; }
         public bool heightTextBoxClicked { get; set; }
         public bool weightTextBoxClicked { get; set; }
+        public bool imperialRadioChecked { get; set; }
+        public float bmi { get; set; }
 
         public BMICalculator()
         {
@@ -147,6 +149,7 @@ namespace Assignment4
 
         private void HeightTextBox_Click(object sender, EventArgs e)
         {
+            ClearNumericKeyboard();
             CalculatorButtonTableLayoutPanel.Visible = true;
             heightTextBoxClicked = true;
             weightTextBoxClicked = false;
@@ -154,6 +157,7 @@ namespace Assignment4
 
         private void WeightTextBox_Click(object sender, EventArgs e)
         {
+            ClearNumericKeyboard();
             CalculatorButtonTableLayoutPanel.Visible = true;
             weightTextBoxClicked = true;
             heightTextBoxClicked = false;
@@ -163,6 +167,71 @@ namespace Assignment4
         {
             WeightTextBox.Text = string.Empty;
             HeightTextBox.Text = string.Empty;
+            BMITextBox.Text = string.Empty;
+            ResultTextBox.Text = string.Empty;
+            CalculatorButtonTableLayoutPanel.Visible = false;
+        }
+
+        private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            imperialRadioChecked = true;          
+            HeightLabel.Text = "Height(in)";
+            WeightLabel.Text = "Weight(lb)";
+            BMITextBox.Text = string.Empty;
+            ResultTextBox.Text = string.Empty;
+        }
+
+        private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            imperialRadioChecked = false;
+            HeightLabel.Text = "Height(m)";
+            WeightLabel.Text = "Weight(kg)";
+            BMITextBox.Text = string.Empty;
+            ResultTextBox.Text = string.Empty;
+            
+        }
+
+        private void CalculateBMIButton_Click(object sender, EventArgs e)
+        {
+            float _height;
+            float _weight;
+            bool _heightValid = float.TryParse(HeightTextBox.Text, out _height);
+            bool _weightValid = float.TryParse(WeightTextBox.Text, out _weight);
+
+            if (_heightValid && _weightValid)
+            {
+                if (imperialRadioChecked == true)
+                {
+                    bmi = _weight * 703 / _height / _height;
+                    BMITextBox.Text = Math.Round(bmi, 1).ToString();
+                }
+                if (imperialRadioChecked == false)
+                {
+                    bmi = _weight / _height / _height;
+                    BMITextBox.Text = Math.Round(bmi, 1).ToString();
+                }
+                resultDisplay();
+            }         
+        }
+
+        private void resultDisplay()
+        {
+            if (bmi < 18.5)
+            {
+                ResultTextBox.Text = "Underweight";
+            }
+            else if (bmi >= 18.5 && bmi <= 24.9)
+            {
+                ResultTextBox.Text = "Normal";
+            }
+            else if (bmi >= 25 && bmi <= 29.9)
+            {
+                ResultTextBox.Text = "Overweight";
+            }
+            else if (bmi >= 30)
+            {
+                ResultTextBox.Text = "Obese";
+            }
         }
     }
 }
