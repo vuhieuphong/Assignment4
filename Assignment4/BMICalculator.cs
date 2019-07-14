@@ -12,14 +12,157 @@ namespace Assignment4
 {
     public partial class BMICalculator : Form
     {
+        public string outputString { get; set; }
+        public bool decimalExists { get; set; }
+        public float outputValue { get; set; }
+        public bool heightTextBoxClicked { get; set; }
+        public bool weightTextBoxClicked { get; set; }
+
         public BMICalculator()
         {
             InitializeComponent();
         }
 
-        private void BMIButtons_Click(object sender, EventArgs e)
+        private void CalculatorButton_Click(object sender, EventArgs e)
+        {
+            var TheButton = sender as Button;
+            var tag = TheButton.Tag.ToString();
+            int buttonValue;
+            bool resultCondition = int.TryParse(tag, out buttonValue);
+            if (resultCondition)
+            {
+                int maxSize = 3;
+                if (decimalExists)
+                {
+                    maxSize = 5;
+                }
+                if ((outputString != "0") && (ResultLabel.Text.Count() < maxSize))
+                {
+                    outputString += tag;
+                    ResultLabel.Text = outputString;
+                }
+                if(outputString=="0")
+                {
+                    outputString = string.Empty;
+                }
+            }
+            //if the user pressed a button that is not a number
+            if (!resultCondition)
+            {
+                switch (tag)
+                {
+                    case "clear":
+                        ClearNumericKeyboard();
+                        break;
+                    case "back":
+                        removeLastCharacterFromResultLabel();
+                        break;
+                    case "done":
+                        finalizeOutput();
+                        break;
+                    case "decimal":
+                        addDecimalToResultLabel();
+                        break;
+                }
+            }
+        }
+        /// <summary>
+        /// this method adds a decimal to the result label
+        /// </summary>
+        private void addDecimalToResultLabel()
+        {
+            if (!decimalExists)
+            {
+                if (ResultLabel.Text == "0")
+                {                   
+                    outputString = "0";
+                }
+                outputString += ".";
+                decimalExists = true;
+            }
+        }
+        /// <summary>
+        /// this method finalizes the calculation for the label
+        /// </summary>
+        private void finalizeOutput()
+        {
+            if (outputString == string.Empty)
+            {
+                outputString = "0";
+            }
+            outputValue = float.Parse(outputString);
+            if(heightTextBoxClicked==true)
+            {
+                HeightTextBox.Text = outputValue.ToString();
+                heightTextBoxClicked = false;
+            }
+            if(weightTextBoxClicked==true)
+            {
+                WeightTextBox.Text = outputValue.ToString();
+                weightTextBoxClicked = false;
+            }
+            ClearNumericKeyboard();
+            CalculatorButtonTableLayoutPanel.Visible = false;
+        }
+        /// <summary>
+        /// this method removes the last character from the result label
+        /// </summary>
+        private void removeLastCharacterFromResultLabel()
+        {
+            if (outputString.Length > 0)
+            {
+                var lastChar = outputString.Substring(outputString.Length - 1);
+                if (lastChar == ".")
+                {
+                    decimalExists = false;
+                }
+                outputString = outputString.Remove(outputString.Length - 1);
+                if (outputString.Length == 0)
+                {
+                    ResultLabel.Text = "0";
+                    outputString = string.Empty;
+                }
+                else
+                {
+                    ResultLabel.Text = outputString;
+                }
+                
+            }
+        }
+        /// <summary>
+        /// this method clears the numeric keyboard
+        /// </summary>
+        private void ClearNumericKeyboard()
+        {
+            ResultLabel.Text = "0";
+            outputString = string.Empty;
+            decimalExists = false;
+            outputValue = 0.0f;
+        }
+
+        private void BMICalculatorForm_Load(object sender, EventArgs e)
+        {
+            ClearNumericKeyboard();
+        }
+
+        private void HeightTextBox_Click(object sender, EventArgs e)
         {
             CalculatorButtonTableLayoutPanel.Visible = true;
+            heightTextBoxClicked = true;
+            weightTextBoxClicked = false;
+        }
+
+        private void WeightTextBox_Click(object sender, EventArgs e)
+        {
+            CalculatorButtonTableLayoutPanel.Visible = true;
+            weightTextBoxClicked = true;
+            heightTextBoxClicked = false;
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            WeightTextBox.Text = string.Empty;
+            HeightTextBox.Text = string.Empty;
         }
     }
 }
