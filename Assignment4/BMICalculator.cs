@@ -16,5 +16,10 @@ namespace Assignment4
         {
             InitializeComponent();
         }
+
+        private void BMIButtons_Click(object sender, EventArgs e)
+        {
+            CalculatorButtonTableLayoutPanel.Visible = true;
+        }
     }
 }
