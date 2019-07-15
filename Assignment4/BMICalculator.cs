@@ -170,6 +170,7 @@ namespace Assignment4
             BMITextBox.Text = string.Empty;
             ResultTextBox.Text = string.Empty;
             CalculatorButtonTableLayoutPanel.Visible = false;
+            BMIProgressBar.Value = 0;
         }
 
         private void ImperialRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -179,6 +180,7 @@ namespace Assignment4
             WeightLabel.Text = "Weight(lb)";
             BMITextBox.Text = string.Empty;
             ResultTextBox.Text = string.Empty;
+            BMIProgressBar.Value = 0;
         }
 
         private void MetricRadioButton_CheckedChanged(object sender, EventArgs e)
@@ -188,9 +190,9 @@ namespace Assignment4
             WeightLabel.Text = "Weight(kg)";
             BMITextBox.Text = string.Empty;
             ResultTextBox.Text = string.Empty;
-            
+            BMIProgressBar.Value = 0;
         }
-
+        
         private void CalculateBMIButton_Click(object sender, EventArgs e)
         {
             float _height;
@@ -204,21 +206,43 @@ namespace Assignment4
                 {
                     bmi = _weight * 703 / _height / _height;
                     BMITextBox.Text = Math.Round(bmi, 1).ToString();
+                    bmiProgressBarDisplay();
                 }
                 if (imperialRadioChecked == false)
                 {
                     bmi = _weight / _height / _height;
                     BMITextBox.Text = Math.Round(bmi, 1).ToString();
+                    bmiProgressBarDisplay();
                 }
                 resultDisplay();
-            }         
+            }
+            if(!_heightValid||!_weightValid)
+            {
+                BMITextBox.Text = string.Empty;
+                ResultTextBox.Text = string.Empty;
+                BMIProgressBar.Value = 0;
+            }
+        }
+
+        private void bmiProgressBarDisplay()
+        {
+            if((int)Math.Round(bmi)>30)
+            {
+                bmi = 30;
+            }
+            if ((int)Math.Round(bmi) < 0)
+            {
+                bmi = 0;
+            }
+            BMIProgressBar.Value = (int)Math.Round(bmi);
+
         }
 
         private void resultDisplay()
         {
             if (bmi < 18.5)
             {
-                ResultTextBox.Text = "Underweight";
+                ResultTextBox.Text = "Underweight";              
             }
             else if (bmi >= 18.5 && bmi <= 24.9)
             {
@@ -231,6 +255,72 @@ namespace Assignment4
             else if (bmi >= 30)
             {
                 ResultTextBox.Text = "Obese";
+            }
+        }
+        //this is the validation for the textbox when pressing a key
+        private void HeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if(ch==46&&HeightTextBox.Text.IndexOf(".")!=-1)
+            {
+                e.Handled = true;
+            }
+            if(!char.IsDigit(ch)&& ch!=8&&ch!=46)
+            {
+                e.Handled = true;
+            }
+            if(HeightTextBox.Text.Length>=3&&ch!=8&&ch!=46&& HeightTextBox.Text.IndexOf(".") == -1)
+            {
+                e.Handled = true;
+            }
+            if (HeightTextBox.Text.Length >= 5 && ch != 8 && HeightTextBox.Text.IndexOf(".") != -1)
+            {
+                e.Handled = true;
+            }
+            if(HeightTextBox.Text==string.Empty&&ch==46)
+            {
+                e.Handled = true;
+            }
+            if(HeightTextBox.Text=="0"&&ch==48)
+            {
+                e.Handled = true;
+            }
+            if(HeightTextBox.Text=="0"&&ch!=48&&ch!=46)
+            {
+                HeightTextBox.Text = string.Empty;
+            }
+        }
+
+        private void WeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char ch = e.KeyChar;
+            if (ch == 46 && WeightTextBox.Text.IndexOf(".") != -1)
+            {
+                e.Handled = true;
+            }
+            if (!char.IsDigit(ch) && ch != 8 && ch != 46)
+            {
+                e.Handled = true;
+            }
+            if (WeightTextBox.Text.Length >= 3 && ch != 8 && ch != 46 && WeightTextBox.Text.IndexOf(".") == -1)
+            {
+                e.Handled = true;
+            }
+            if (WeightTextBox.Text.Length >= 5 && ch != 8 && WeightTextBox.Text.IndexOf(".") != -1)
+            {
+                e.Handled = true;
+            }
+            if (WeightTextBox.Text == string.Empty && ch == 46)
+            {
+                e.Handled = true;
+            }
+            if (WeightTextBox.Text == "0" && ch == 48)
+            {
+                e.Handled = true;
+            }
+            if (WeightTextBox.Text == "0" && ch != 48 && ch != 46)
+            {
+                WeightTextBox.Text = string.Empty;
             }
         }
     }
