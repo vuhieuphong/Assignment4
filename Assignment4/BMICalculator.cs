@@ -5,9 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+/// <summary>
+/// Name: Vu Hieu Phong
+/// Student Number: 301049781
+/// Last modified: July 18th 2019
+/// Description: BMI calculator
+/// Revision history: July 18th 2019
+/// </summary>
 namespace Assignment4
 {
     public partial class BMICalculator : Form
@@ -21,7 +28,7 @@ namespace Assignment4
         public float bmi { get; set; }
 
         public BMICalculator()
-        {
+        {          
             InitializeComponent();
         }
 
@@ -192,7 +199,7 @@ namespace Assignment4
             ResultTextBox.Text = string.Empty;
             BMIProgressBar.Value = 0;
         }
-        
+
         private void CalculateBMIButton_Click(object sender, EventArgs e)
         {
             float _height;
@@ -200,7 +207,7 @@ namespace Assignment4
             bool _heightValid = float.TryParse(HeightTextBox.Text, out _height);
             bool _weightValid = float.TryParse(WeightTextBox.Text, out _weight);
 
-            if (_heightValid && _weightValid)
+            if (_heightValid && _weightValid&&_height!=0)
             {
                 if (imperialRadioChecked == true)
                 {
@@ -216,9 +223,9 @@ namespace Assignment4
                 }
                 resultDisplay();
             }
-            if(!_heightValid||!_weightValid)
+            if (!_heightValid || !_weightValid||_height==0)
             {
-                BMITextBox.Text = string.Empty;
+                BMITextBox.Text = "Invalid";
                 ResultTextBox.Text = string.Empty;
                 BMIProgressBar.Value = 0;
             }
@@ -290,7 +297,7 @@ namespace Assignment4
                 HeightTextBox.Text = string.Empty;
             }
         }
-
+        
         private void WeightTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char ch = e.KeyChar;
@@ -322,6 +329,11 @@ namespace Assignment4
             {
                 WeightTextBox.Text = string.Empty;
             }
+        }
+
+        private void BMICalculator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

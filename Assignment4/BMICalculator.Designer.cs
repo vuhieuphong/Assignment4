@@ -93,13 +93,15 @@
             this.ResetButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.ResetButton.BackColor = System.Drawing.Color.Salmon;
             this.ResetButton.Font = new System.Drawing.Font("Arial", 18F);
+            this.ResetButton.ForeColor = System.Drawing.Color.White;
             this.ResetButton.Location = new System.Drawing.Point(155, 123);
             this.ResetButton.Name = "ResetButton";
             this.ResetButton.Size = new System.Drawing.Size(146, 34);
             this.ResetButton.TabIndex = 9;
             this.ResetButton.Text = "Reset";
-            this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.UseVisualStyleBackColor = false;
             this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // WeightTextBox
@@ -120,6 +122,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.MetricRadioButton.AutoSize = true;
+            this.MetricRadioButton.ForeColor = System.Drawing.Color.Black;
             this.MetricRadioButton.Location = new System.Drawing.Point(155, 3);
             this.MetricRadioButton.Name = "MetricRadioButton";
             this.MetricRadioButton.Size = new System.Drawing.Size(146, 34);
@@ -135,6 +138,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.ImperialRadioButton.AutoSize = true;
+            this.ImperialRadioButton.ForeColor = System.Drawing.Color.Black;
             this.ImperialRadioButton.Location = new System.Drawing.Point(3, 3);
             this.ImperialRadioButton.Name = "ImperialRadioButton";
             this.ImperialRadioButton.Size = new System.Drawing.Size(146, 34);
@@ -151,6 +155,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WeightLabel.AutoSize = true;
             this.WeightLabel.Font = new System.Drawing.Font("Arial", 18F);
+            this.WeightLabel.ForeColor = System.Drawing.Color.Black;
             this.WeightLabel.Location = new System.Drawing.Point(3, 80);
             this.WeightLabel.Name = "WeightLabel";
             this.WeightLabel.Size = new System.Drawing.Size(146, 40);
@@ -165,6 +170,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeightLabel.AutoSize = true;
             this.HeightLabel.Font = new System.Drawing.Font("Arial", 18F);
+            this.HeightLabel.ForeColor = System.Drawing.Color.Black;
             this.HeightLabel.Location = new System.Drawing.Point(3, 40);
             this.HeightLabel.Name = "HeightLabel";
             this.HeightLabel.Size = new System.Drawing.Size(146, 40);
@@ -207,13 +213,15 @@
             this.CalculateBMIButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.CalculateBMIButton.BackColor = System.Drawing.Color.MediumPurple;
             this.CalculateBMIButton.Font = new System.Drawing.Font("Arial", 18F);
+            this.CalculateBMIButton.ForeColor = System.Drawing.Color.White;
             this.CalculateBMIButton.Location = new System.Drawing.Point(3, 123);
             this.CalculateBMIButton.Name = "CalculateBMIButton";
             this.CalculateBMIButton.Size = new System.Drawing.Size(146, 34);
             this.CalculateBMIButton.TabIndex = 6;
             this.CalculateBMIButton.Text = "Calculate";
-            this.CalculateBMIButton.UseVisualStyleBackColor = true;
+            this.CalculateBMIButton.UseVisualStyleBackColor = false;
             this.CalculateBMIButton.Click += new System.EventHandler(this.CalculateBMIButton_Click);
             // 
             // HeightTextBox
@@ -242,7 +250,7 @@
             // 
             // CalculatorButtonTableLayoutPanel
             // 
-            this.CalculatorButtonTableLayoutPanel.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.CalculatorButtonTableLayoutPanel.BackColor = System.Drawing.Color.LightSteelBlue;
             this.CalculatorButtonTableLayoutPanel.ColumnCount = 4;
             this.CalculatorButtonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.CalculatorButtonTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
@@ -520,7 +528,7 @@
             this.DoneButton.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.DoneButton.BackColor = System.Drawing.Color.Green;
+            this.DoneButton.BackColor = System.Drawing.Color.YellowGreen;
             this.DoneButton.Font = new System.Drawing.Font("Arial", 12F);
             this.DoneButton.ForeColor = System.Drawing.Color.White;
             this.DoneButton.Location = new System.Drawing.Point(231, 117);
@@ -537,6 +545,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(304, 441);
             this.Controls.Add(this.CalculatorButtonTableLayoutPanel);
             this.Controls.Add(this.BMITablePanel);
@@ -547,6 +556,7 @@
             this.Name = "BMICalculator";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMICalculatorForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BMICalculator_FormClosing);
             this.BMITablePanel.ResumeLayout(false);
             this.BMITablePanel.PerformLayout();
             this.CalculatorButtonTableLayoutPanel.ResumeLayout(false);

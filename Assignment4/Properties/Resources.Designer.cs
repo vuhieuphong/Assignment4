@@ -69,5 +69,15 @@ namespace Assignment4.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap delish_pineapple_bun_burger_pin_1_lf {
+            get {
+                object obj = ResourceManager.GetObject("delish-pineapple-bun-burger-pin-1-lf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }
