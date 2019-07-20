@@ -13,7 +13,7 @@ using System.Windows.Forms;
 /// Student Number: 301049781
 /// Last modified: July 18th 2019
 /// Description: BMI calculator
-/// Revision history: July 18th 2019
+/// Revision history: Finalized the program
 /// </summary>
 namespace Assignment4
 {
