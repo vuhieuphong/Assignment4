@@ -1,6 +1,6 @@
 ﻿namespace Assignment4
 {
-    partial class BMICalculator
+    partial class BMICalculatorForm
     {
         /// <summary>
         /// Required designer variable.
@@ -111,7 +111,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.WeightTextBox.Location = new System.Drawing.Point(155, 83);
             this.WeightTextBox.Name = "WeightTextBox";
-            this.WeightTextBox.Size = new System.Drawing.Size(146, 38);
+            this.WeightTextBox.Size = new System.Drawing.Size(146, 46);
             this.WeightTextBox.TabIndex = 5;
             this.WeightTextBox.Click += new System.EventHandler(this.WeightTextBox_Click);
             this.WeightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WeightTextBox_KeyPress);
@@ -204,7 +204,7 @@
             this.BMITextBox.ForeColor = System.Drawing.Color.Black;
             this.BMITextBox.Location = new System.Drawing.Point(3, 163);
             this.BMITextBox.Name = "BMITextBox";
-            this.BMITextBox.Size = new System.Drawing.Size(146, 38);
+            this.BMITextBox.Size = new System.Drawing.Size(146, 46);
             this.BMITextBox.TabIndex = 6;
             this.BMITextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -231,7 +231,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.HeightTextBox.Location = new System.Drawing.Point(155, 43);
             this.HeightTextBox.Name = "HeightTextBox";
-            this.HeightTextBox.Size = new System.Drawing.Size(146, 38);
+            this.HeightTextBox.Size = new System.Drawing.Size(146, 46);
             this.HeightTextBox.TabIndex = 3;
             this.HeightTextBox.Click += new System.EventHandler(this.HeightTextBox_Click);
             this.HeightTextBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightTextBox_KeyPress);
@@ -541,9 +541,9 @@
             this.DoneButton.UseVisualStyleBackColor = false;
             this.DoneButton.Click += new System.EventHandler(this.CalculatorButton_Click);
             // 
-            // BMICalculator
+            // BMICalculatorForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 32F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(19F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(304, 441);
@@ -553,7 +553,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
-            this.Name = "BMICalculator";
+            this.Name = "BMICalculatorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BMICalculatorForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BMICalculator_FormClosing);

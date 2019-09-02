@@ -17,7 +17,7 @@ using System.Windows.Forms;
 /// </summary>
 namespace Assignment4
 {
-    public partial class BMICalculator : Form
+    public partial class BMICalculatorForm : Form
     {
         public string outputString { get; set; }
         public bool decimalExists { get; set; }
@@ -27,7 +27,7 @@ namespace Assignment4
         public bool imperialRadioChecked { get; set; }
         public float bmi { get; set; }
 
-        public BMICalculator()
+        public BMICalculatorForm()
         {          
             InitializeComponent();
         }

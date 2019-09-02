@@ -15,7 +15,7 @@ namespace Assignment4
     static class Program
     {
         public static StartForm startForm;
-        public static BMICalculator mainForm;
+        public static BMICalculatorForm mainForm;
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Assignment4
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             startForm= new StartForm();
-            mainForm = new BMICalculator();
+            mainForm = new BMICalculatorForm();
             Application.Run(startForm);
         }
     }
